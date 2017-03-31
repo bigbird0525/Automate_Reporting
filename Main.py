@@ -1,7 +1,7 @@
 import queue
 import threading
 import Automated_Reporting
-import DB
+import Access_DB
 lock = threading.Lock()
 cred_queue = queue.Queue()
 
@@ -61,5 +61,5 @@ class Threader(Runnable):
 
 if __name__ == "__main__":
     logins = Automated_Reporting.GetCredentials().run("logins.csv")
-    DB.Access_DB('external_partners.db').create_db()
+    Access_DB.Access_DB('external_partners.db').create_db()
     Threader().load(logins)
