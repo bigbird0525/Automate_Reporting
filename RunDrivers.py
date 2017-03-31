@@ -5,7 +5,7 @@ import DB
 lock = threading.Lock()
 cred_queue = queue.Queue()
 
-class Runnable(threading.Thread):
+class RunDrivers(threading.Thread):
 
     def __init__(self):
         super().__init__()
@@ -51,7 +51,7 @@ class Threader(Runnable):
             cred_queue.put(row)
 
         for i in range(4):
-            new_thread = threading.Thread(target=Runnable())
+            new_thread = threading.Thread(target=RunDrivers())
             threads.append(new_thread)
             new_thread.daemon = True
             new_thread.start()
