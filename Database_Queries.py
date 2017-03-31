@@ -29,5 +29,3 @@ def create_table():
 def dedupe_table():
     db_cursor.execute("INSERT INTO externalRevenue_dedupe SELECT DISTINCT * FROM externalRevenue")
     db_connect.commit()
-
-dedupe_table()
